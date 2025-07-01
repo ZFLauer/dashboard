@@ -1,0 +1,2 @@
+Desc,timeStamp,srcIP,srcPort,destIP,destPort,commProtocol,ruleID,ecuID,IDSMID,mac
+"ALERT: Potential SOME/IP Man in the Middle. SD Offer IP changed",01/10-06:09:45.343950 ,192.168.1.27,30490,224.224.224.245,30490,UDP,61448,60,1000,ade55cf5315875665b8851821e211cd1c37047ca638fe0bb474b2ed28b45bf1f

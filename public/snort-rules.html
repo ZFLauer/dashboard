@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snort Rules</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" height="80" alt="Logo" id="logo" />
+        <h1>Snort Rules</h1>
+    </header>
+    <!-- Navigationsmenü -->
+<nav class="main-menu">
+    <ul>
+       <li><a href="index.html">Dashboard</a></li>
+            <li><a href="snort-rules.html">Snort Rules</a></li>
+            <li><a href="logs.html">Log Dateien</a></li>
+    </ul>
+</nav>
+    <main>
+        <section>
+            <h2>Upload Snort Rules</h2>
+            <input type="file" id="fileInput" accept=".rules" />
+            <button id="uploadButton">Upload Rules</button>
+        </section>
+
+        <section>
+            <h2>Snort Rules Übersicht</h2>
+            <table id="rulesTable">
+                <thead>
+                    <tr>
+                        <th>Regel</th>
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Snort-Regeln werden hier eingefügt -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="snort-rules.js"></script>
+</body>
+</html>
+

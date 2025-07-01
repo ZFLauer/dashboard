@@ -1,0 +1,20 @@
+{
+  "name": "snort-dashboard",
+  "version": "1.0.0",
+  "description": "Dashboard für Snort Alerts",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "install-all": "./install.sh"
+  },
+  "dependencies": {
+    "chart.js": "^3.0.0",
+    "ejs": "^3.1.10",
+    "express": "^4.17.1",
+    "fast-csv": "^4.3.6",
+    "mongodb": "^4.2.0",
+    "mongoose": "^6.0.12",
+    "multer": "^1.4.3",
+    "ssh2-sftp-client": "^6.0.1"
+  }
+}

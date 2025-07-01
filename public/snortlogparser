@@ -1,0 +1,51 @@
+import struct
+import sys
+import json
+
+
+def parse_snort_log(file_path):
+    log_details = []
+
+    try:
+        with open(file_path, "rb") as f:
+            while True:
+                header = f.read(8)
+                if len(header) < 8:
+                    break  # End of file reached
+
+                record_type, record_length = struct.unpack('>II', header)
+                record_data = f.read(record_length)
+                if len(record_data) < record_length:
+                    break
+
+                # Example of extracting some data (the details depend on the actual log format)
+                if record_type == 7:  # Assuming type 7 is an event
+                    event = struct.unpack('>IIIIIIIIIII', record_data[:44])  # Adjust according to actual format
+                    event_timestamp = struct.unpack('>I', record_data[4:8])[0]
+                    source_ip = ".".join(map(str, struct.unpack('BBBB', record_data[44:48])))
+                    destination_ip = ".".join(map(str, struct.unpack('BBBB', record_data[48:52])))
+
+                    log_entry = {
+                        "event_id": event[0],
+                        "timestamp": event_timestamp,
+                        "source_ip": source_ip,
+                        "destination_ip": destination_ip,
+                        "signature_id": event[3],
+                    }
+                    log_details.append(log_entry)
+
+        # Print the log details as JSON
+        print(json.dumps(log_details, indent=2))
+
+    except Exception as e:
+        print(json.dumps({"error": str(e)}), file=sys.stderr)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python parse_snort_log.py <file_path>")
+        sys.exit(1)
+
+    file_path = sys.argv[1]
+    parse_snort_log(file_path)
+

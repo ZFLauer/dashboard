@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Dateien</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" height="80" alt="Logo" id="logo" />
+        <h1>Log Dateien</h1>
+    </header>
+    <nav class="main-menu">
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="snort-rules.html">Snort Rules</a></li>
+            <li><a href="logs.html">Log Dateien</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <h2>Log Dateien Übersicht</h2>
+
+            <!-- Filterformular -->
+            <div class="filters">
+                <label for="timestampFilter">Timestamp:</label>
+                <input type="text" id="timestampFilter" placeholder="YYYY-MM-DD" />
+
+                <label for="srcIPFilter">Source IP:</label>
+                <input type="text" id="srcIPFilter" placeholder="192.168.1.1" />
+
+                <label for="destIPFilter">Destination IP:</label>
+                <input type="text" id="destIPFilter" placeholder="192.168.1.100" />
+
+                <label for="protocolFilter">Protocol:</label>
+                <input type="text" id="protocolFilter" placeholder="TCP" />
+
+                <button id="applyFilterButton">Filter anwenden</button>
+                <button id="clearFilterButton">Filter zurücksetzen</button>
+            </div>
+
+    <!-- Update Logs Button -->
+    <button id="updateLogsButton">Update Logs</button>
+            <!-- Tabelle -->
+            <table id="logTable">
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Layer</th>
+                        <th>Source IP</th>
+                        <th>Destination IP</th>
+                        <th>Protocol</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Log-Einträge werden hier eingefügt -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+ 
+<!-- Modales Pop-up für Log-Details -->
+<div id="logModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>  <!-- Schließen-Button mit Klasse "close" -->
+        <h2>Log Details</h2>
+        <p><strong>Timestamp:</strong> <span id="logTimestamp"></span></p>
+        <p><strong>Highest Layer:</strong> <span id="logHighestLayer"></span></p>
+        <p><strong>Length:</strong> <span id="logLength"></span></p>
+        <p><strong>Source IP:</strong> <span id="logSourceIP"></span></p>
+        <p><strong>Destination IP:</strong> <span id="logDestinationIP"></span></p>
+        <p><strong>Protocol:</strong> <span id="logProtocol"></span></p>
+        <p><strong>Full Packet Summary:</strong> <span id="logFullPacketSummary"></span></p>
+    </div>
+</div>
+
+
+<style>
+    /* Modal Style mit Scrollbarkeit */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+        position: relative;
+        background-color: #fff;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-height: 80vh; /* Begrenzung auf 80% der Bildschirmhöhe */
+        overflow-y: auto; /* Ermöglicht Scrollen bei überlaufendem Inhalt */
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+    }
+</style>
+   <script src="logDisplay.js"></script>
+</body>
+</html>

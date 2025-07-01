@@ -1,0 +1,234 @@
+:root {
+    --base-color-dark: #000828; /* zf-dark-blue */
+    --base-color-middle: #0057B7; /* zf-middle-blue */
+    --base-color-middle-hover: #267BD9;
+    --base-color-middle-bubble-hover: #0B67CB;
+    --base-color-middle-click: #004A9D;
+    --base-color: #1179BF; /* zf-blue */
+    --base-color-light: #00abe7; /* zf-cyan */
+    --base-color-50: #7fd5f3; /* zf-cyan-50% */
+    --base-color-40: #7fd5f3;
+    --base-color-25: #bfeaf9; /* zf-cyan-25% */
+    --cyan-button-inactive: #84DFFF;
+    --cyan-button-hover: #BDEEFF;
+    --cyan-button-click: #ECFAFF;
+    --custom-red: #E52330; /* zf-red */
+    --custom-black: #000000;
+    --custom-gray: #F0F2F4; /* zf-overlay-gray */
+    --custom-gray-900: #556B7C;
+    --custom-gray-50: #7f7f7f;
+    --custom-gray-200: #E1E6EA;
+    --custom-gray-25: #bfbfbf;
+    --custom-gray-10: #f0f2f4;
+    --custom-white: #ffffff;
+    --default-font: "Prometo";
+}
+/* Styling für das Navigationsmenü */
+.main-menu {
+    background-color: var(--base-color-middle); /* Verwende deine bereits definierten Farben */
+    padding: 10px 20px;
+}
+ /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+.main-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-menu ul li {
+    margin-right: 20px;
+}
+
+.main-menu ul li a {
+    color: var(--custom-white); /* Textfarbe weiß */
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 20px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.main-menu ul li a:hover {
+    background-color: var(--base-color-middle-hover); /* Hover-Farbe */
+    border-radius: 5px;
+}
+
+.main-menu ul li a:active {
+    background-color: var(--base-color-middle-click); /* Klick-Farbe */
+}
+@font-face {
+    font-family: 'Prometo';
+    src: url("/subset-NanumBarunGothic-YetHangul.woff") format("woff");
+    font-style: normal;
+    font-weight: 300;
+}
+
+body {
+    font-family: var(--default-font), sans-serif;
+    background-color: var(--custom-gray);
+    color: var(--custom-black);
+    line-height: 1.6;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--base-color-middle);
+    color: var(--custom-white);
+    padding: 1rem 2rem;
+}
+.chart-row {
+    display: flex;
+    flex-wrap: nowrap; /* Verhindert das Umbrücken der Diagramme */
+    justify-content: space-between; /* Verteilt die Diagramme gleichmäßig */
+    margin-bottom: 60px;
+    height: 200px; /* Höhe wird dynamisch angepasst */
+}
+
+
+.chart-container {
+    width: 100%; /* Reduzierte Breite, damit alle Diagramme besser passen */
+    max-width: 400px; /* Begrenze die maximale Breite der Diagramme */
+    text-align: left;
+    margin-bottom: 20px;
+}
+h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+canvas {
+    width: 100%; /* Stellt sicher, dass das Diagramm die volle Breite einnimmt */
+    height: auto; /* Höhe wird dynamisch angepasst */
+}
+
+.logo {
+    height: 50px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+main {
+    padding: 2rem;
+}
+
+.controls {
+    margin-bottom: 1rem;
+}
+
+input[type="file"] {
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid var(--custom-gray-200);
+    border-radius: 5px;
+}
+
+button {
+    background-color: var(--base-color-middle);
+    color: var(--custom-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: var(--base-color-middle-hover);
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: var(--base-color-middle-click);
+}
+
+.charts {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+}
+
+.chart-container {
+    width: 100%;
+    max-width: 600px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--custom-gray-200);
+}
+
+th {
+    background-color: var(--base-color-middle);
+    color: var(--custom-white);
+}
+
+tr:hover {
+    background-color: var(--base-color-25);
+}
+
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    h1 {
+        margin-bottom: 10px;
+    }
+
+    .charts {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+

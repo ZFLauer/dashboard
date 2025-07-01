@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snort Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+     <!-- Leaflet.js CSS und JavaScript -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+    <header>
+        <img src="logo.png" height="80" alt="Logo" id="logo" />
+        <h1>ZF Security Operations Center</h1>
+ 
+    </header>
+         <nav class="main-menu">
+    <ul>
+        <li><a href="index.html">Dashboard</a></li>
+            <li><a href="snort-rules.html">Snort Rules</a></li>
+            <li><a href="logs.html">Log Dateien</a></li>
+    </ul>
+</nav>
+    <main>
+        <section>
+            <h2>Alerts</h2>
+             <!-- SFTP Button zum Abrufen der CSV-Dateien -->
+   
+       <!-- Diagramm-Container -->
+            <div class="chart-row">
+                <div class="chart-container">
+                    <h3>Quell-IP Verteilung</h3>
+                    <canvas id="srcIPChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Ziel-IP Verteilung</h3>
+                    <canvas id="destIPChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Protokollverteilung</h3>
+                    <canvas id="protocolChart"></canvas>
+                </div>
+                           <div class="chart-container">
+                    <h3>Anzahl der Alerts nach Tagen</h3>
+                    <canvas id="alertCountChart"></canvas>
+
+                </div>
+     
+                <!--  <div class="chart-container">
+                    <h3>Attack Location</h3>
+                    
+                     <div id="map" style="height: 500px;"></div>-->
+
+    <script src="map.js"></script>
+                </div>
+            </div>
+                
+            
+            <!-- Filterformular -->
+            <div class="filters">
+                <label for="srcIP">Quelle IP:</label>
+                <input type="text" id="srcIP" placeholder="192.168.1.1" />
+                
+                <label for="destIP">Ziel IP:</label>
+                <input type="text" id="destIP" placeholder="192.168.1.100" />
+                
+                <label for="protocol">Protokoll:</label>
+                <input type="text" id="protocol" placeholder="TCP" />
+
+                <button id="applyFilterButton">Filter anwenden</button>
+                <button id="clearFilterButton">Filter zurücksetzen</button>
+            </div>
+
+            <!-- Upload und Delete -->
+              <button id="fetchSftpAlertsButton">CSV-Dateien von SFTP abrufen</button>
+            <button id="uploadButton">Upload Alerts</button>
+            <input type="file" id="fileInput" accept=".csv" />
+            <button id="deleteSelectedButton">Ausgewählte löschen</button>
+            <button id="deleteAllButton">Alle löschen</button>
+   
+            <!-- Tabelle -->
+            <table id="alertTable">
+                <thead>
+                    <tr>
+                        <th>Auswahl</th>
+                        <th>Desc</th>
+                        <th>TimeStamp</th>
+                        <th>Src IP</th>
+                        <th>Src Port</th>
+                        <th>Dest IP</th>
+                        <th>Dest Port</th>
+                        <th>Protocol</th>
+                        <th>Rule ID</th>
+                        <th>ECU ID</th>
+                        <th>IDSM ID</th>
+                    </tr>
+                </thead>
+                <!-- Modales Pop-up für Alert-Details -->
+<div id="alertModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Alert Details</h2>
+        <p id="alertDetails">Hier erscheinen die Details des Alerts.</p>
+    </div>
+</div>
+                <tbody>
+                    <!-- Alerts will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
+
